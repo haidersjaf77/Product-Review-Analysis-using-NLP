@@ -1,20 +1,87 @@
-# Product Review Sentiment Analysis  
+# Semantic Sentiment Analysis of Amazon Product Reviews 🛍️
 
-## Overview  
-This project leverages **Natural Language Processing (NLP)** to perform **semantic analysis** on product reviews from Amazon. Using web scraping, text preprocessing, and sentiment analysis, the system extracts valuable insights to help businesses understand customer preferences and improve their products.  
+This project leverages **Natural Language Processing (NLP)** techniques to analyze customer reviews of sneaker brands from Amazon. The goal is to extract meaningful insights about customer sentiment to support data-driven product and marketing decisions.
 
-## Features  
-- **Web Scraping** to collect real customer reviews.  
-- **Text Preprocessing** including stopword removal, tokenization, and sentiment scoring.  
-- **Sentiment Analysis** using **VADER** to classify reviews as **positive, neutral, or negative**.  
-- **Data Visualization** through bar charts and histograms to compare sentiment trends across brands.  
+---
 
-## Technologies Used  
-- **Python** (BeautifulSoup, requests, pandas)  
-- **Natural Language Processing** (NLTK, TextBlob, SentimentIntensityAnalyzer)  
-- **Data Visualization** (Matplotlib, Seaborn)  
+## 📌 Table of Contents
 
-## How to Run  
-1. Install dependencies:  
-   ```sh
-   pip install requests beautifulsoup4 pandas nltk textblob matplotlib seaborn
+* [Introduction](#introduction)
+* [Data Collection](#data-collection)
+* [Preprocessing & Feature Extraction](#preprocessing--feature-extraction)
+* [Sentiment Analysis](#sentiment-analysis)
+* [Evaluation & Visualization](#evaluation--visualization)
+* [Insights](#insights)
+* [Technologies Used](#technologies-used)
+
+---
+
+## 📖 Introduction
+
+Understanding customer sentiment is essential for product development and brand strategy. This project analyzes Amazon sneaker reviews to classify sentiments and identify the best-performing brands based on customer feedback.
+
+---
+
+## 🔍 Data Collection
+
+* **Platform**: [Amazon](https://www.amazon.com/)
+* **Method**: Web scraping using `requests` and `BeautifulSoup`
+* **Fields Collected**:
+
+  * `Product` (sneaker brand)
+  * `Buyer` (reviewer's name or alias)
+  * `Rating` (e.g., 4.0 out of 5)
+  * `Review` (written feedback)
+
+A total of **1035 reviews** across multiple sneaker brands were collected and stored in a structured CSV file.
+
+---
+
+## 🧹 Preprocessing & Feature Extraction
+
+* Missing buyer names replaced with "Amazon Customer"
+* Ratings extracted and converted to numeric
+* Text preprocessing included:
+
+  * Language detection and translation (via `TextBlob`)
+  * Removing punctuation and non-alphabetic characters
+  * Tokenization and stopword removal (using `nltk`)
+
+---
+
+## 💬 Sentiment Analysis
+
+* Used **NLTK's SentimentIntensityAnalyzer** for scoring each review.
+* Sentiment categories:
+
+  * **Positive**: score > 0.05
+  * **Neutral**: -0.05 ≤ score ≤ 0.05
+  * **Negative**: score < -0.05
+
+---
+
+## 📊 Evaluation & Visualization
+
+Visualizations were generated using `matplotlib` and `seaborn`:
+
+* **Sentiment Distribution**: Majority of reviews were positive
+* **Sentiment Score Histogram**: Showed skew toward high sentiment scores
+* **Average Sentiment by Product**: Compared brands on average customer sentiment
+
+---
+
+## 📈 Insights
+
+* **Top performer**: *Puma* had the highest average sentiment score
+* **Others**: Adidas and Nike followed closely, while Sannax, Caterpillar, and Skechers showed weaker customer sentiment
+* **Recommendation**: Brands with low sentiment should review feedback to improve customer satisfaction
+
+---
+
+## 🛠️ Technologies Used
+
+* Python
+* `requests`, `BeautifulSoup` – Web scraping
+* `pandas`, `numpy` – Data processing
+* `nltk`, `TextBlob` – NLP and sentiment analysis
+* `matplotlib`, `seaborn` – Visualization
